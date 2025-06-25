@@ -1,5 +1,3 @@
-![recXiv logo](.github/logo.png)
-
 # recXiv
 
 recXiv is a **self-hostable semantic search engine** for arXiv papers.  
