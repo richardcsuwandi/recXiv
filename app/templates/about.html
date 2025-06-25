@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    
+    <title>recXiv | about</title>
+
+    <link rel="icon" type="image/x-icon" href="static/favicon.png">
+    <link rel= "stylesheet" type= "text/css" href="static/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div id="header">
+      <a id="logo" href="/"><span class="black">rec</span><span class="red">Xiv</span></a>
+      <div id="right_header">
+        <a class="header_link" href="about"><span class="black">about</span></a>
+      </div>
+    </div>
+    <div id="container" style="margin-bottom:50px;">
+      <p id="about_title" class="black">about</p>
+      <p class="about_text black">recXiv embeds the <span class="code">title + abstract</span> of 350,000+ ML/AI papers with the <a href="https://huggingface.co/sentence-transformers" target="_blank">Sentence-Transformers</a> model <span class="code">all-MiniLM-L6-v2</span>. The vectors are stored in a local <a href="https://github.com/facebookresearch/faiss" target="_blank">FAISS</a> index, so the service runs entirely offline — no external APIs or cloud databases required.</p>
+      <p class="about_text black">When you perform a search, your query is embedded on the fly with the same model and the <span class="code">top&nbsp;10</span> papers ranked by cosine similarity are returned.</p>
+      <!-- <p class="about_text black">recXiv is an open-source hobby project. You can find the code on <a href="https://github.com/richardcsuwandi/recXiv" target="_blank">GitHub</a>. Feedback and contributions are very welcome 🤗</p> -->
+    </div>
+  </body>
+</html>
+s

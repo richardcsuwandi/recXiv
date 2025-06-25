@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-XP8T80NGPG"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+		gtag('config', 'G-XP8T80NGPG');
+	</script>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+	<meta name="description" content="A semantic search engine for ML/AI papers on arXiv">
+
+	<meta property="og:title" content="recXiv">
+	<meta property="og:url" content="https://recxiv.com">
+	<meta property="og:image" content="https://recxiv.com/static/card-image.png">
+
+	<title>recXiv</title>
+
+	<link rel="icon" type="image/x-icon" href="static/favicon.png">
+	<link rel="stylesheet" type="text/css" href="static/styles.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css" integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0" crossorigin="anonymous">
+	<link rel=preload href="/static/go-to-symbol.svg" as=image>
+	<link rel=preload href="/static/similarity-symbol.svg" as=image>
+	<link rel=preload href="/static/error-symbol.svg" as=image>
+	<link rel=preload href="/static/info-symbol.svg" as=image>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" crossorigin="anonymous"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js" integrity="sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4" crossorigin="anonymous"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+	<script src="/static/script.js"></script>
+	
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			background-color: black;
+			color: #ffffff;
+			font-family: 'Roboto Mono';
+			min-height: 100vh;
+			display: flex;
+			flex-direction: column;
+		}
+		
+		#header {
+			position: absolute;
+			top: 40px;
+			right: 40px;
+			z-index: 1000;
+		}
+		
+		.header_link {
+			color: #ffffff;
+			text-decoration: none;
+			font-size: 20px;
+			opacity: 0.8;
+			transition: opacity 0.3s ease;
+		}
+		
+		.header_link:hover {
+			opacity: 1;
+		}
+		
+		#main_content {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			min-height: 100vh;
+			padding: 80px 20px 20px 20px; /* Added top padding to prevent overlap with header */
+			box-sizing: border-box;
+			text-align: center;
+		}
+		
+		#logo_section {
+			margin-bottom: 20px;
+		}
+		
+		#main_logo {
+			font-size: 72px;
+			font-weight: 300;
+			margin-bottom: 20px;
+			letter-spacing: -2px;
+			text-decoration: none;
+		}
+		
+		.logo_rec {
+			font-family: 'Roboto Mono';
+			color: #ffffff;
+		}
+		
+		.logo_xiv {
+			font-family: 'Roboto Mono';
+			color: rgba(165,44,37,1);
+		}
+		
+		#tagline {
+			font-size: 24px;
+			font-weight: 300;
+			color: #cccccc;
+			margin-bottom: 10px;
+			letter-spacing: 0.5px;
+		}
+		
+		#search_section {
+			width: 100%;
+			max-width: 600px;
+		}
+		
+		#example_query {
+			font-size: 36px;
+			color: #888888;
+			font-style: italic;
+			font-family: 'Roboto Mono';
+		}
+		
+		#description {
+			font-size: 20px;
+			color: #aaaaaa;
+			line-height: 1.6;
+			max-width: 500px;
+			margin: 0 auto;
+		}
+		
+		#query_field {
+			width: 100% !important;
+			padding: 15px 24px !important;
+			font-size: 24px !important;
+			border: 2px solid #444444 !important;
+			border-radius: 8px !important;
+			background-color: #2a2a2a !important;
+			color: #ffffff !important;
+			outline: none !important;
+			transition: border-color 0.3s ease !important;
+			font-family: 'Roboto Mono' !important;
+			margin-bottom: 15px !important;
+			text-align: center !important;
+			resize: none !important;
+			height: 70px !important;
+			box-sizing: border-box !important;
+			overflow: hidden !important; /* Remove scrollbars */
+			display: block !important;
+			line-height: 40px !important; /* This centers the text vertically */
+		}
+		
+		#query_field:focus {
+			border-color:  rgba(165,44,37,1);
+		}
+		
+		#query_field::placeholder {
+			color: #666666;
+		}
+		
+		#error_container {
+			display: none;
+			margin-top: 20px;
+		}
+		
+		#toggle_container {
+			display: none;
+		}
+		
+		#toggle_container.appear {
+			display: block;
+		}
+		
+		#results {
+			margin-top: 20px;
+			width: 100%;
+			max-width: 800px;
+		}
+		
+		@media (max-width: 768px) {
+			#main_logo {
+				font-size: 48px;
+			}
+			
+			#tagline {
+				font-size: 20px;
+				margin-bottom: 20px;
+			}
+			
+			#example_query {
+				font-size: 16px;
+			}
+			
+			#header {
+				top: 20px;
+				right: 20px;
+			}
+			
+			.header_link {
+				font-size: 18px;
+			}
+		}
+	</style>
+</head>
+<body>
+	<!-- <div id="header">
+		<a class="header_link" href="about">About</a>
+	</div> -->
+	
+	<div id="main_content">
+		<div id="logo_section">
+			<a href="/" id="main_logo">
+				<span class="logo_rec">rec</span><span class="logo_xiv">Xiv</span>
+			</a>
+			<div id="tagline">A semantic search engine for arXiv papers</div>
+		</div>
+		
+		<div id="search_section">
+			<textarea id="query_field" name="query" autocapitalize="off" placeholder="e.g. is adam better than sgd?"></textarea>
+			<div id="description">Use natural language to describe the papers you are looking for.</div>
+		</div>
+		
+		<div id="error_container">
+			<div id="error_flex">
+				<div id="error_symbol"></div>
+				<p id="error_text">Error</p>
+			</div>
+		</div>
+		
+		<div id="toggle_container">
+			<div id="toggle_flex">
+				<div class="toggle toggle_enabled" data-tab="papers">
+					<p>Papers</p>
+				</div>
+				<div class="toggle toggle_disabled" data-tab="people">
+					<p>People</p>
+				</div>
+			</div>
+		</div>
+		
+		<div id="results"></div>
+	</div>
+</body>
+</html>
