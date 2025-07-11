@@ -65,10 +65,3 @@ docker run -p 8000:8000 \
   -v "$(pwd)/data":/app/data \
   recxiv-app
 ```
-
-## License
-MIT
-
----
-
-recXiv was forked from the original **searchthearXiv** project by @awester but replaces Pinecone with FAISS for a fully local workflow.
