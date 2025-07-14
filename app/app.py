@@ -17,7 +17,7 @@ app = flask.Flask(__name__)
 # ---------------------------------------------------------------------------
 # Configuration
 # ---------------------------------------------------------------------------
-DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
+DEVICE = "cpu"  # Force CPU for Vercel deployment
 MAX_QUERY_LEN = 200  # characters
 TOP_K = 10
 DATA_PATH = "data/minilm" # data/mpnet or data/minilm
