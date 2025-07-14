@@ -3,7 +3,7 @@
 recXiv is a **self-hostable semantic search engine** for arXiv papers. It is designed to run completely offline: embeddings are created with [Sentence-Transformers](https://www.sbert.net/) and stored in a local [FAISS](https://github.com/facebookresearch/faiss) index, so no external vector database or paid API calls are required.
 
 ## How it works
-1. `data/build_index.py` reads the public `arxiv-metadata-oai-snapshot.json`, embeds *title + abstract* with the `all-MiniLM-L6-v2` model, normalises the vectors and stores them in a `faiss.IndexFlatIP`.
+1. `data/build_index.py` reads the public `metadata.json`, embeds *title + abstract* with the `all-MiniLM-L6-v2` or `all-mpnet-base-v2` model, normalises the vectors and stores them in a `faiss.IndexFlatIP`.
 2. The script writes two artefacts:
    * `data/faiss_index.bin` – the vector index
    * `data/metadata.json`  – a list with lightweight metadata for each paper.
@@ -24,11 +24,11 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-Download the full arXiv metadata (~4 GB) from Kaggle and build an index:
+Download the full arXiv metadata from [Kaggle](https://www.kaggle.com/datasets/Cornell-University/arxiv) and build an index:
 
 ```bash
 python data/build_index.py \
-  --arxiv-json path/to/arxiv-metadata-oai-snapshot.json \
+  --arxiv-json path/to/metadata.json \
   --out-index data/faiss_index.bin \
   --out-meta  data/metadata.json
 ```
@@ -44,13 +44,13 @@ The server can be tweaked with environment variables (all optional):
 | RECXIV_INDEX_PATH    | `data/faiss_index.bin`      | path to the FAISS index file         |
 | RECXIV_META_PATH     | `data/metadata.json`        | path to the metadata JSON            |
 | RECXIV_EMBED_MODEL   | `all-MiniLM-L6-v2`          | sentence-transformer model to embed ad-hoc queries |
-| RECXIV_TOP_K         | `100`                       | number of results to return          |
+| RECXIV_TOP_K         | `10`                        | number of results to return          |
 | RECXIV_USE_GPU       | `0`                         | set to `1` to move the index to GPU (Linux / CUDA build of FAISS) |
 
 Example:
 
 ```bash
-export RECXIV_TOP_K=25
+export RECXIV_TOP_K=5
 export RECXIV_USE_GPU=1
 gunicorn --bind 0.0.0.0:8000 app.app:app
 ```
