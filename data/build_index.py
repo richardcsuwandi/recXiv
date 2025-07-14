@@ -1,5 +1,5 @@
 """build_index.py
-Create a FAISS index and metadata file for a minimal recXiv deployment.
+Create a FAISS index and metadata file for recXiv deployment.
 
 Usage (once you have downloaded the Kaggle arXiv metadata):
     python build_index.py \
@@ -8,7 +8,7 @@ Usage (once you have downloaded the Kaggle arXiv metadata):
         --out-meta  data/metadata.json
 
 This script will
-1. filter papers to primary categories cs.AI and cs.LG
+1. filter papers to primary categories
 2. use SentenceTransformers to embed "title + abstract"
 3. normalise embeddings and store them in a FAISS IndexFlatIP
 4. write the index and a metadata JSON list to disk.
