@@ -1,5 +1,7 @@
 # recXiv
 
+![recXiv](recXiv_logo.png)
+
 recXiv is a **self-hostable semantic search engine** for arXiv papers. It is designed to run completely offline: embeddings are created with [Sentence-Transformers](https://www.sbert.net/) and stored in a local [FAISS](https://github.com/facebookresearch/faiss) index, so no external vector database or paid API calls are required.
 
 ## How it works
