@@ -18,8 +18,8 @@ app = flask.Flask(__name__)
 # Configuration
 # ---------------------------------------------------------------------------
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
-MAX_QUERY_LEN = 200  # characters
-TOP_K = 10
+MAX_QUERY_LEN = 250
+TOP_K = 10 # number of results to return
 DATA_PATH = "data/minilm" # data/mpnet or data/minilm
 INDEX_PATH = DATA_PATH + "/faiss_index.gpu"
 META_PATH = DATA_PATH + "/metadata.json"
@@ -63,11 +63,11 @@ def search():
 
     if not query:
         return error("Please provide a non-empty query.")
-    
+
     # natural language query length guard
     if len(query) > MAX_QUERY_LEN:
         return error("Sorry! The length of your query cannot exceed 200 characters.")
-    
+
     # if user pasted an arXiv URL, try to fetch its abstract and embed
     if validators.url(query) and "arxiv.org" in query:
         arxiv_id = query.split("/")[-1]
