@@ -4,6 +4,11 @@
 
 recXiv is a **self-hostable semantic search engine** for arXiv papers. It is designed to run completely offline: embeddings are created with [Sentence-Transformers](https://www.sbert.net/) and stored in a local [FAISS](https://github.com/facebookresearch/faiss) index, so no external vector database or paid API calls are required.
 
+## Demo
+
+![recXiv Demo](https://github.com/richardcsuwandi/recXiv/blob/master/demo.mov)
+
+
 ## How it works
 1. `data/build_index.py` reads the public `metadata.json`, embeds *title + abstract* with the `all-MiniLM-L6-v2` or `all-mpnet-base-v2` model, normalises the vectors and stores them in a `faiss.IndexFlatIP`.
 2. The script writes two artefacts:
