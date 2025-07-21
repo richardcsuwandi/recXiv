@@ -6,7 +6,7 @@ recXiv is a **self-hostable semantic search engine** for arXiv papers. It is des
 
 ## Demo
 
-![recXiv Demo](https://github.com/richardcsuwandi/recXiv/blob/master/demo.mov)
+![recXiv Demo](https://github.com/richardcsuwandi/recXiv/blob/master/demo.mp4)
 
 
 ## How it works
