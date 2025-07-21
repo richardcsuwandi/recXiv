@@ -6,8 +6,9 @@ recXiv is a **self-hostable semantic search engine** for arXiv papers. It is des
 
 ## Demo
 
-![recXiv Demo](https://github.com/richardcsuwandi/recXiv/blob/master/demo.mp4)
-
+<video width="320" height="240" controls>
+  <source src="https://github.com/richardcsuwandi/recXiv/blob/master/demo.mp4" type="video/mp4">
+</video>
 
 ## How it works
 1. `data/build_index.py` reads the public `metadata.json`, embeds *title + abstract* with the `all-MiniLM-L6-v2` or `all-mpnet-base-v2` model, normalises the vectors and stores them in a `faiss.IndexFlatIP`.
